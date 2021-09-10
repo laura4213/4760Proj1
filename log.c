@@ -3,6 +3,7 @@
 #include "log.h"
 
 typedef struct list_struct {
+	data_t type;
 	data_t time;
 	struct list_struct *next;
 }log_t;
@@ -10,7 +11,8 @@ typedef struct list_struct {
 static log_t *headptr = NULL;
 static log_t *tailptr = NULL;
 
-int addmsg(data_t data) {
+int addmsg(const char type, const char * msg) {
+	
 	return 0;
 }
 
@@ -22,6 +24,8 @@ char *getlog(void){
 }
 
 int savelog(char *filename){
+	
+	
 	return 0;
 }
 
