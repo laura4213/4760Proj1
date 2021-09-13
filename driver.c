@@ -1,3 +1,9 @@
+/*
+ *Date Changed: 9/13/2021
+ *
+ *Author: Laura Stroud
+ *
+ */
 #include <unistd.h>
 #include <getopt.h>
 #include <stdlib.h>
@@ -13,18 +19,19 @@ while((opt = getopt(argc, argv, "ht:")) != -1) {
 
 	switch (opt) {
 	case 'h':
-		fprintf(stderr, "Usage: Driver [-h] [-t sec] [logfile] %b\n");
+		fprintf(stderr, "Usage: Driver [-h] [-t sec] [logfile] \n");
 		
 		break;
 	case 't':
+		savelog("messages.log");
 		printf("test t");
 		break;
 
-	default: /* '?' */
+	default: 
 		printf("test defualt");
-		exit(EXIT_FAILURE);
+	
 	}
-
+	
 
 	exit(EXIT_SUCCESS);
 }
