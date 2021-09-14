@@ -1,1 +1,6 @@
-How to run program
+This programs runs with arguments like this:
+./driver [-h] [-t] [logfile]
+
+When driver with no argument is called nothing happens. Then when driver -t sec is called a segmentation fault occurs which I can not figure out where the memory is messing up. The driver -h works.  
+
+My github url for this project is: github.com/laura4213/4760Proj1

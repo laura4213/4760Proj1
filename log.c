@@ -34,8 +34,6 @@ int addmsg(const char type, const char *msg) {
 	fseek(rfile, 0L, SEEK_END);
 	long int size = ftell(rfile);
 
-	fclose(rfile);
-
 	struct data {
 		time_t time;
 		char type;
@@ -62,6 +60,8 @@ int addmsg(const char type, const char *msg) {
 	}
 	
 	tailptr = node;
+
+	fclose(rfile);
 	
 	return 0;
 }
@@ -79,7 +79,7 @@ void clearlog(void){
 }
 
 char *getlog(void){
-	char *logs = malloc(500 *  sizeof(char));
+	char *logs = malloc(1000 *  sizeof(char));
 	log_t *get;
 
 	if(logs == NULL) {
@@ -95,23 +95,29 @@ char *getlog(void){
 		}
 	}
 	
-	return NULL;
+	return logs;
 }
 
-char (*get)();
 
 int savelog(char *filename){
 	FILE *wfile;
-
-	get = getlog;
 	
-	wfile = fopen("messages.log", "w");
+
+	getlog();
+	char *get;
+
+	get = getlog();
+
+	wfile = fopen(filename, "w");
 	if(wfile == NULL){
 		perror("Driver: Error: Cannot open messages.log");
 		exit(0);
 	}
 
-	get(wfile);
+	while(get != NULL)
+	{
+		fputs(get, wfile);
+	}
 
 	fclose(wfile);
 	

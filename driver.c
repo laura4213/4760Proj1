@@ -24,11 +24,11 @@ while((opt = getopt(argc, argv, "ht:")) != -1) {
 		break;
 	case 't':
 		savelog("messages.log");
-		printf("test t");
+		clearlog();
 		break;
 
 	default: 
-		printf("test defualt");
+		savelog("messages.log");
 	
 	}
 	
